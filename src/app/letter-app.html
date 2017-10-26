@@ -1,0 +1,105 @@
+<div>
+    <div class="form-horizontal">
+    <form [formGroup]="representativeForm" (ngSubmit)="searchRepresent($event)">
+        <div class="form-group">
+            <label class="form-label">Search representative by your address:</label>
+                <div class="input-group">
+                    <input class="form-control" formControlName="search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit" [disabled]="!this.representativeForm.valid">Search</button>
+                    </span>
+                </div>
+        </div>
+        <div class="alert alert-danger" role="alert" [hidden]="!this.searchErrorMsg">
+            {{this.searchErrorMsg}}
+        </div>
+    </form>
+    </div>
+</div>
+<div>
+    <div class="form-horizontal">
+    <form [formGroup]="letterForm" (ngSubmit)="sendLetter($event)">
+        <div formGroupName="to">
+            <h4 class="text-center">To</h4>
+            <div class="form-group">
+                <label class="form-label">Name: *</label>
+                    <input class="form-control" formControlName="name">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">Address line1: *</label>
+                    <input class="form-control" formControlName="address_line1">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">Address line2: </label>
+                    <input class="form-control" formControlName="address_line2">
+
+            </div>
+            <div class="form-group">
+                <label class="form-label">City: *</label>
+                    <input class="form-control" formControlName="address_city">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">State: *</label>
+                    <input class="form-control" formControlName="address_state">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">Zip: *</label>
+                    <input class="form-control" formControlName="address_zip">
+                
+            </div>
+        </div>
+        <div formGroupName="from">
+            <h4 class="text-center">From</h4>
+            <div class="form-group">
+                <label class="form-label">Name: *</label>
+                    <input class="form-control" formControlName="name">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">Address line1: *</label>
+                    <input class="form-control" formControlName="address_line1">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">Address line2:</label>
+                    <input class="form-control" formControlName="address_line2">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">City: *</label>
+                    <input class="form-control" formControlName="address_city">
+                
+            </div>
+            <div class="form-group">
+                <label class="form-label">State: *</label>
+                    <select class="form-control" formControlName="address_state">
+                        <option *ngFor="let state of this.states" [value]="state">{{state}}</option>
+                    </select>
+                    
+            </div>
+            <div class="form-group">
+                <label class="form-label">Zip: *</label>
+                    <input class="form-control" formControlName="address_zip">
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Message: *</label>
+                <textarea class="form-control" formControlName="message"></textarea>
+            
+        </div>
+        <div class="row">
+        <div class="alert alert-danger" role="alert" [hidden]="!this.letterErrorMsg">
+            {{this.letterErrorMsg}}
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!this.letterForm.valid">Send</button>
+        <button class="btn btn-info" (click)="viewLetter($event)" [disabled]="!this.letterURL">View Latest Letter</button>
+        </div>
+    </form>
+    </div>
+    
+</div>
